@@ -40,7 +40,7 @@ const sendEmails = async ({ file, additionalMessage }) => {
             sentCount++
             emails += `${email},`
           } else {
-            nonSentCount ++
+            nonSentCount++
             errors += `${email},`
           }
         }
