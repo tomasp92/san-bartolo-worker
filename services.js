@@ -51,11 +51,16 @@ const sendEmails = async ({ file, additionalMessage }) => {
         return {sentCount, emails, error: {number: 400, json: { message: `Error al enviar correos: ${error}`}}}
       } finally {
         // Eliminamos el archivo subido después de su uso
-        fs.unlink(file, (err) => {
-          if (err) {
-            console.error('Error al eliminar el archivo:', err)
-          }
-        })
+        if (!fs.existsSync(file)) {
+          return { sentCount, emails, error: { number: 400, json: { error: 'El archivo no existe' } } };
+        } else {
+          fs.unlink(file, (err) => {
+            if (err) {
+              console.error('Error al eliminar el archivo:', err)
+            }
+          })
+        }
+        
       }
 }
 
