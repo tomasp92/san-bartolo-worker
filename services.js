@@ -1,7 +1,7 @@
 const xlsx = require('xlsx')
 const fs = require('fs');
 const { getHtmlHeaders, getRowDetails } = require('./utils/html_utils')
-const { sendMail } = require('./adapters/nodemailer')
+const { sendMail, sentEmailsReport } = require('./adapters/nodemailer')
 
 const sendEmails = async ({ file, additionalMessage }) => {
     let emails = ''
