@@ -1,0 +1,16 @@
+{
+  "name": "email-worker",
+  "version": "1.0.0",
+  "description": "Worker for processing email jobs from Redis queue",
+  "main": "workers/emailWorker.js",
+  "scripts": {
+    "start": "node workers/emailWorker.js"
+  },
+  "dependencies": {
+    "ioredis": "^5.4.1",
+    "xlsx": "^0.18.5",
+    "nodemailer": "^6.9.15",
+    "dotenv": "^16.4.5",
+    "fs-extra": "^11.1.0"
+  }
+}
