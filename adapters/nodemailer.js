@@ -55,7 +55,7 @@ const sendMail = ({ email, additionalMessage, detail, file, totalDebt }) => {
 
 const sentEmailsReport = async ({ sentCount, emails, errors }) => {
   await transporterSendMail({
-    email: 'tomaspalau35@hotmail.com', //sanbartolo.pagos@gmail.com
+    email: gmail_user,
     subject: `La rendición de san bartolo fue envíada a  ${sentCount} emails`,
     html: `<h1>La rendición de san bartolo fue envíada</h1>
            <p>Fue recibida por los siguientes emails: ${emails}</p>
