@@ -53,14 +53,15 @@ const sendMail = ({ email, additionalMessage, detail, file, totalDebt }) => {
   })
 }
 
-const sentEmailsReport = async ({ sentCount, emails, errors }) => {
+const sentEmailsReport = async ({ sentCount, emails, errors, nonSentCount }) => {
   await transporterSendMail({
     email: gmail_user,
     subject: `La rendición de san bartolo fue envíada a  ${sentCount} emails`,
-    html: `<h1>La rendición de san bartolo fue envíada</h1>
-           <p>Fue recibida por los siguientes emails: ${emails}</p>
-           <br><br><br><br><br><br><br>
-           <p>Errores al enviar para los siguientes emails: ${errors}</p>`,
+    html: `<h1 style="color:#4CAF50;">La rendición de San Bartolo fue enviada, se enviaron ${sentCount} emails</h1>
+<p>Fue recibida por los siguientes emails: <span style="color:#007BFF;">${emails}</span></p>
+<br><br><br><br><br><br><br>
+<p style="color:#F44336;">Hubieron : ${nonSentCount} errores en el envío</p>
+<p>Errores al enviar para los siguientes emails: <span style="color:#007BFF;">${errors}</span></p>`,
   })
   return {sentCount, emails, error: false }
 }

@@ -45,7 +45,7 @@ const sendEmails = async ({ file, additionalMessage }) => {
           }
         }
         
-        return sentEmailsReport({sentCount, emails, errors })
+        return sentEmailsReport({sentCount, emails, errors, nonSentCount })
       } catch (error) {
         console.error(error)
         return {sentCount, emails, error: {number: 400, json: { message: `Error al enviar correos: ${error}`}}}
