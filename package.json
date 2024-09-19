@@ -2,9 +2,9 @@
   "name": "email-worker",
   "version": "1.0.0",
   "description": "Worker for processing email jobs from Redis queue",
-  "main": "workers/emailWorker.js",
+  "main": "processes/email.process.js",
   "scripts": {
-    "start": "node workers/emailWorker.js"
+    "start": "node processes/email.process.js"
   },
   "dependencies": {
     "ioredis": "^5.4.1",
