@@ -2,7 +2,7 @@ const { sendEmails } = require('../services')
 require('dotenv').config()
 const Redis = require('ioredis')
 const redisClient = new Redis(process.env.REDIS)
-const fs = require('fs').promises
+const fs = require('fs-extra')
 const path = require('path')
 const temp = require('temp')
 
