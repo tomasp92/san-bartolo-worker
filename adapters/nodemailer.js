@@ -36,17 +36,17 @@ const transporterSendMail = ({ email, subject, html, attachments }) => {
   })
 }
 
-const sendMail = ({ email, additionalMessage, detail, file, totalDebt }) => {
+const sendMail = ({ email, additionalMessage, detail, file, totalDebt, fileName }) => {
   const debtTitle = totalDebt > 0 ? `Debes $${totalDebt}` : `Tenés a favor $${totalDebt*-1}`
   return transporterSendMail({
     email,
-    subject: `${debtTitle}. Rendición San Bartolo ${monthName} ${year}`,
+    subject: `${debtTitle}. ${fileName}`,
     html: `<p>${additionalMessage}</p>
            <p>A continuación se detalla la deuda:</p>
            ${detail}<br>${getAccountDetails()}`,
     attachments: [
       {
-        filename: `Rendición San Bartolo ${monthName} ${year}.xlsx`,
+        filename: fileName,
         path: file
       }
     ]
@@ -56,7 +56,7 @@ const sendMail = ({ email, additionalMessage, detail, file, totalDebt }) => {
 const sentEmailsReport = async ({ sentCount, emails, errors, nonSentCount }) => {
   await transporterSendMail({
     email: gmail_user,
-    subject: `La rendición de san bartolo fue envíada a  ${sentCount} emails`,
+    subject: `La rendición de san bartolo fue envíada a ${sentCount} emails`,
     html: `<h1 style="color:#4CAF50;">La rendición de San Bartolo fue enviada, se enviaron ${sentCount} emails</h1>
 <p>Fue recibida por los siguientes emails: <span style="color:#007BFF;">${emails}</span></p>
 <br><br><br><br><br><br><br>

@@ -23,10 +23,9 @@ const processQueue = async () => {
 
         // Guardar el archivo en el sistema de archivos
         await fs.writeFile(tempFilePath, fileBuffer)
-        console.log('🚀 ~ file:', tempFilePath)
 
         // Llamar a sendEmails con la ruta del archivo temporal
-        await sendEmails({ file: tempFilePath, additionalMessage })
+        await sendEmails({ file: tempFilePath, additionalMessage, fileName })
 
         // Eliminar el archivo temporal después de su uso
         await fs.unlink(tempFilePath)

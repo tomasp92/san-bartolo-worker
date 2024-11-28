@@ -3,7 +3,7 @@ const fs = require('fs');
 const { getHtmlHeaders, getRowDetails } = require('./utils/html_utils')
 const { sendMail, sentEmailsReport } = require('./adapters/nodemailer')
 
-const sendEmails = async ({ file, additionalMessage }) => {
+const sendEmails = async ({ file, additionalMessage, fileName }) => {
     let emails = ''
     let sentCount = 0
     let nonSentCount = 0
@@ -35,7 +35,7 @@ const sendEmails = async ({ file, additionalMessage }) => {
           const rows = getRowDetails({ data, totalesIndex, currentIndex: i })
           const detail = `${headersHTML}${rows}</table>`
 
-          const sent = await sendMail({ email, additionalMessage, detail, file: file, totalDebt })
+          const sent = await sendMail({ email, additionalMessage, detail, file: file, totalDebt, fileName })
           if (sent){
             sentCount++
             emails += `${email},`
