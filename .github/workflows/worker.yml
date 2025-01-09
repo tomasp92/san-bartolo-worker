@@ -18,10 +18,11 @@ jobs:
       with:
         node-version: 18 # Use the version of Node.js you need
 
-    run: |
-      echo "GMAIL_USER=${{ secrets.GMAIL_USER }}" >> $GITHUB_ENV
-      echo "GMAIL_PASS=${{ secrets.GMAIL_PASS }}" >> $GITHUB_ENV
-      echo "REDIS=${{ secrets.REDIS }}" >> $GITHUB_ENV
+    - name: Set up environment variables
+      run: |
+        echo "GMAIL_USER=${{ secrets.GMAIL_USER }}" >> $GITHUB_ENV
+        echo "GMAIL_PASS=${{ secrets.GMAIL_PASS }}" >> $GITHUB_ENV
+        echo "REDIS=${{ secrets.REDIS }}" >> $GITHUB_ENV
 
     - name: Install Dependencies
       run: npm install
