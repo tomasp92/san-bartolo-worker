@@ -4,7 +4,6 @@ require('dotenv').config()
 const { getMonthName, getMonthAndYear } = require('../utils/date_utils')
 const {  getAccountDetails } = require('../utils/html_utils')
 
-console.log('GMAIL_USER:', process.env.GMAIL_USER)
 const gmail_user = process.env.GMAIL_USER
 
 // Create Nodemailer transporter
