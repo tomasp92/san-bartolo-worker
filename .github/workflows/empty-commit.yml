@@ -1,9 +1,9 @@
-name: Scheduled Empty Commit (Every 30 mins)
+name: Scheduled Empty Commit (Monthly)
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Cada 30 minutos
-  workflow_dispatch:
+    - cron: '*/5 * * * *'  # Cada 5 minutos # '0 0 1 * *'  # Día 1 de cada mes a las 00:00 UTC
+  workflow_dispatch:  # Permite correrlo manualmente
 
 jobs:
   empty-commit:
@@ -13,12 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Git
+      - name: Configure Git
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "Automated Commit Bot"
+          git config user.email "bot@example.com"
 
       - name: Create empty commit
         run: |
-          git commit --allow-empty -m "Automated empty commit to keep workflows active"
+          git commit --allow-empty -m "Monthly automated empty commit to keep workflows active"
+
+      - name: Push commit using GH_PAT
+        env:
+          TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
           git push origin HEAD
