@@ -2,7 +2,7 @@ name: Scheduled Empty Commit (Monthly)
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Cada 5 minutos # '0 0 1 * *'  # Día 1 de cada mes a las 00:00 UTC
+    - cron: '0 0 15 * *'  # Día 15 de cada mes a las 00:00 UTC
   workflow_dispatch:  # Permite correrlo manualmente
 
 permissions:
