@@ -2,7 +2,7 @@ name: Scheduled Empty Commit (Every 30 mins)
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # Cada 30 minutos
+    - cron: '*/5 * * * *'  # Cada 30 minutos
   workflow_dispatch:
 
 jobs:
