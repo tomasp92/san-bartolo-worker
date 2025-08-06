@@ -5,6 +5,9 @@ on:
     - cron: '*/5 * * * *'  # Cada 5 minutos # '0 0 1 * *'  # Día 1 de cada mes a las 00:00 UTC
   workflow_dispatch:  # Permite correrlo manualmente
 
+permissions:
+  contents: write  # Esto es CLAVE para permitir push
+
 jobs:
   empty-commit:
     runs-on: ubuntu-latest
