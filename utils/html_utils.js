@@ -1,21 +1,21 @@
-function getAccountDetails() {
+function getAccountDetails(accountData) {
   const accountDetails =  `
     <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse;">
     <tr style="background-color: #f2f2f2;">
         <th style="text-align: left;">Número de Cuenta</th>
-        <td style="background-color: #e6f7ff;">799983351</td>
+        <td style="background-color: #e6f7ff;">${accountData.n_cuenta}</td>
     </tr>
     <tr>
         <th style="text-align: left;">CBU</th>
-        <td style="background-color: #e6ffe6;">0070335020000007999815</td>
+        <td style="background-color: #e6ffe6;">${accountData.cbu}</td>
     </tr>
     <tr style="background-color: #f2f2f2;">
         <th style="text-align: left;">Alias CBU</th>
-        <td style="background-color: #fff7e6;">familiaborda</td>
+        <td style="background-color: #fff7e6;">${accountData.alias}</td>
     </tr>
     <tr>
         <th style="text-align: left;">CUIL/CUIT</th>
-        <td style="background-color: #fff2e6;">30717385930</td>
+        <td style="background-color: #fff2e6;">${accountData.cuit_cuil}</td>
     </tr>
     </table> `
   return accountDetails

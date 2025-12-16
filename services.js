@@ -12,8 +12,10 @@ const sendEmails = async ({ file, additionalMessage, fileName }) => {
         const workbook = xlsx.readFile(file)
         const sheetName = workbook.SheetNames[0]
         const sheet = workbook.Sheets[sheetName]
-        const data = xlsx.utils.sheet_to_json(sheet, { range: 5, header: 1 }) 
-        
+        const data = xlsx.utils.sheet_to_json(sheet, { range: 5, header: 1 })
+
+        const accountDataSheet = workbook.Sheets["Datos Cuenta"]
+        const accountData = xlsx.utils.sheet_to_json(accountDataSheet, { range: 1, header: 0 })[0]
     
         const headers = data[0]
         const totalesIndex = headers.indexOf("Total")
@@ -35,7 +37,7 @@ const sendEmails = async ({ file, additionalMessage, fileName }) => {
           const rows = getRowDetails({ data, totalesIndex, currentIndex: i })
           const detail = `${headersHTML}${rows}</table>`
 
-          const sent = await sendMail({ email, additionalMessage, detail, file: file, totalDebt, fileName })
+          const sent = await sendMail({ email, additionalMessage, detail, file: file, totalDebt, fileName, accountData })
           if (sent){
             sentCount++
             emails += `${email},`

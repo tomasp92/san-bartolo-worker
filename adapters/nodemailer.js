@@ -35,14 +35,14 @@ const transporterSendMail = ({ email, subject, html, attachments }) => {
   })
 }
 
-const sendMail = ({ email, additionalMessage, detail, file, totalDebt, fileName }) => {
+const sendMail = ({ email, additionalMessage, detail, file, totalDebt, fileName, accountData }) => {
   const debtTitle = totalDebt > 0 ? `Debes $${totalDebt}` : `Tenés a favor $${totalDebt*-1}`
   return transporterSendMail({
     email,
     subject: `${debtTitle}. ${fileName.replace('.xlsx', '')}`,
     html: `<p>${additionalMessage}</p>
            <p>A continuación se detalla la deuda:</p>
-           ${detail}<br>${getAccountDetails()}`,
+           ${detail}<br>${getAccountDetails(accountData)}`,
     attachments: [
       {
         filename: fileName,
