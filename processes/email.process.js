@@ -35,7 +35,7 @@ const processQueue = async () => {
       await sendEmails({ file: tempFilePath, additionalMessage, fileName })
 
       // Eliminar el archivo temporal después de su uso
-      await fs.unlink(tempFilePath)
+      await fs.remove(tempFilePath)
     
     } catch (error) {
       console.error('Error al procesar la cola:', error)
