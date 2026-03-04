@@ -10,8 +10,7 @@ const sendEmails = async ({ file, additionalMessage, fileName }) => {
 
   try {
     const workbook = xlsx.readFile(file)
-    const sheetName = workbook.SheetNames[0]
-    const sheet = workbook.Sheets[sheetName]
+    const sheet = workbook.Sheets['Cuotas Pendientes']
     const data = xlsx.utils.sheet_to_json(sheet, { range: 5, header: 1 })
 
     const accountDataSheet = workbook.Sheets['Datos Cuenta']
