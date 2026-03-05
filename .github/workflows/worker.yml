@@ -3,7 +3,7 @@ name: Run Email Worker
 on:
   workflow_dispatch: # Allows manual runs
   schedule:
-    - cron: '0,30 * * * *' # Runs every hour at :00 and :30
+    - cron: '0 12-16,22 * * *' # Daily at 09:00-13:00 hourly + 19:00 (UTC-3)
 
 jobs:
   process-queue:
