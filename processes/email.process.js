@@ -36,6 +36,9 @@ const processQueue = async () => {
 
       // Eliminar el archivo temporal después de su uso
       await fs.remove(tempFilePath)
+
+      // Eliminar el archivo de Redis, ya no se necesita una vez procesado
+      await redisClient.del(fileKey)
     
     } catch (error) {
       console.error('Error al procesar la cola:', error)
